@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Registration</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="card">
+    <h1>Student Registration</h1>
+    <p class="subtitle">Fill in all fields marked with <span class="req">*</span></p>
+
+    <!-- novalidate: we use our own JavaScript validation instead of the browser's -->
+    <form id="regForm" novalidate>
+
+      <div class="field">
+        <label for="studentId">Student ID <span class="req">*</span></label>
+        <input type="text" id="studentId" name="studentId" placeholder="e.g. 2024-00123"
+               data-label="Student ID" data-hint="Format: YYYY-NNNNN">
+        <small class="error-msg" id="studentId-error"></small>
+      </div>
+
+      <div class="field">
+        <label for="fullName">Full Name <span class="req">*</span></label>
+        <input type="text" id="fullName" name="fullName" placeholder="James Aaron Asur"
+               data-label="Full name">
+        <small class="error-msg" id="fullName-error"></small>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="email">Email <span class="req">*</span></label>
+          <input type="email" id="email" name="email" placeholder="you@school.edu"
+                 data-label="Email">
+          <small class="error-msg" id="email-error"></small>
+        </div>
+        <div class="field">
+          <label for="phone">Phone Number <span class="req">*</span></label>
+          <input type="tel" id="phone" name="phone" placeholder="09XX-XXX-XXXX" maxlength="13"
+                 data-label="Phone number" data-hint="Format: 09XX-XXX-XXXX">
+          <small class="error-msg" id="phone-error"></small>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="dob">Date of Birth <span class="req">*</span></label>
+          <input type="date" id="dob" name="dob" data-label="Date of birth">
+          <small class="error-msg" id="dob-error"></small>
+        </div>
+        <div class="field">
+          <label>Gender <span class="req">*</span></label>
+          <div class="radio-group" id="gender">
+            <label class="inline"><input type="radio" name="gender" value="Male"> Male</label>
+            <label class="inline"><input type="radio" name="gender" value="Female"> Female</label>
+            <label class="inline"><input type="radio" name="gender" value="Other"> Other</label>
+          </div>
+          <small class="error-msg" id="gender-error"></small>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="program">Program <span class="req">*</span></label>
+          <select id="program" name="program" data-label="Program">
+            <option value="">-- Select program --</option>
+            <option value="BSIT">BS Information Technology</option>
+            <option value="BSN">BS Nursing</option>
+            <option value="BSHM">BS Hospitality Management</option>
+            <option value="BSE">BS Education</option>
+          </select>
+          <small class="error-msg" id="program-error"></small>
+        </div>
+        <div class="field">
+          <label for="year">Year Level <span class="req">*</span></label>
+          <select id="year" name="year" data-label="Year level">
+            <option value="">-- Select year --</option>
+            <option value="1">1st Year</option>
+            <option value="2">2nd Year</option>
+            <option value="3">3rd Year</option>
+            <option value="4">4th Year</option>
+          </select>
+          <small class="error-msg" id="year-error"></small>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="password">Password <span class="req">*</span></label>
+        <div class="pw-wrap">
+          <input type="password" id="password" name="password" placeholder="At least 8 characters"
+                 data-label="Password">
+          <!-- data-target tells the script which input this button controls -->
+          <button type="button" class="toggle-pw" data-target="password">Show</button>
+        </div>
+        <small class="hint">Min. 8 characters with a letter and a number.</small>
+        <small class="error-msg" id="password-error"></small>
+      </div>
+
+      <div class="field">
+        <label for="confirmPassword">Confirm Password <span class="req">*</span></label>
+        <div class="pw-wrap">
+          <input type="password" id="confirmPassword" name="confirmPassword"
+                 placeholder="Re-enter password" data-label="Confirm password">
+          <button type="button" class="toggle-pw" data-target="confirmPassword">Show</button>
+        </div>
+        <small class="error-msg" id="confirmPassword-error"></small>
+      </div>
+
+      <div class="field">
+        <label for="address">Address <span class="req">*</span></label>
+        <textarea id="address" name="address" rows="3" maxlength="150"
+                  placeholder="House no., street, barangay, city" data-label="Address"></textarea>
+        <small class="hint" id="addressCount">0 / 150</small>
+        <small class="error-msg" id="address-error"></small>
+      </div>
+
+      <div class="field">
+        <label class="inline">
+          <input type="checkbox" id="agree" name="agree" data-label="Agreement">
+          I confirm that the information above is correct and I agree to the school's terms.
+        </label>
+        <small class="error-msg" id="agree-error"></small>
+      </div>
+
+      <div class="buttons">
+        <button type="submit" class="btn primary">Submit</button>
+        <button type="reset" class="btn secondary">Reset</button>
+      </div>
+
+      <div id="successMessage" class="success hidden" role="status"></div>
+    </form>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
